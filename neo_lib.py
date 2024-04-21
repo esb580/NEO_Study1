@@ -1,8 +1,6 @@
 import requests
-import json
 import pandas as pd
 import matplotlib.pyplot as plt
-
 
 
 def get_neo_data(neo_id, api_key):
@@ -22,7 +20,6 @@ def get_neo_data(neo_id, api_key):
     for close_approach_data in data['close_approach_data']:
         distance_miles.append(close_approach_data['miss_distance']['miles'])
         dates.append(close_approach_data['close_approach_date'])
-
 
     # Create a dictionary to store the extracted data
     neo_data = {
@@ -64,7 +61,7 @@ def visualize_neo_data(df, name):
     yticks = list(range(0, int(df['distance_miles'].max()) + 1, 5000000))
     plt.yticks(yticks, [f'{y/1000000}M' for y in yticks])
 
-    #plt.yticks([0, 5000000, 10000000, 15000000, 20000000, 25000000, 30000000, 35000000, 40000000, 45000000, 50000000], ['0', '5M', '10M', '15M', '20M', '25M', '30M', '35M', '40M', '45M', '50M'])
+    # plt.yticks([0, 5000000, 10000000, 15000000, 20000000, 25000000, 30000000, 35000000, 40000000, 45000000, 50000000], ['0', '5M', '10M', '15M', '20M', '25M', '30M', '35M', '40M', '45M', '50M'])
     plt.ylabel('Distance (miles)')
     plt.grid(True)
 
